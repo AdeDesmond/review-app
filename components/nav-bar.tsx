@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 export const NavBar = () => {
@@ -31,6 +32,14 @@ export const NavBar = () => {
           size="sm"
         >
           About Us
+        </Button>
+        <Button
+          className="bg-[#81689D] border-none text-slate-200 font-semibold"
+          variant="outline"
+          size="sm"
+          asChild
+        >
+          <Link href="/manage">Manage Words</Link>
         </Button>
       </ul>
     </nav>

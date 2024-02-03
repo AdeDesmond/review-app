@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { ShowWordMeaning } from "./show-meaning";
 import { useState } from "react";
+import { useWordStore } from "@/hooks/use-words-hooks";
 
 interface ShowWordsItemsProps {
   word: {
@@ -16,8 +16,11 @@ interface ShowWordsItemsProps {
 
 export const ShowWordsItem = ({ word }: ShowWordsItemsProps) => {
   const [selectedWord, setSelectedWord] = useState("");
-  const selectId = (id: any) => {
-    setSelectedWord(id);
+
+  const getWords = useWordStore((state) => state.getWords);
+  const selectId = (wordFromValue: any) => {
+    setSelectedWord(wordFromValue);
+    getWords(wordFromValue);
   };
   return (
     <div className="flex justify-center items-start text-start ">
@@ -30,9 +33,6 @@ export const ShowWordsItem = ({ word }: ShowWordsItemsProps) => {
       >
         {word.word}
       </Button>
-      <div className="hidden">
-        <ShowWordMeaning word={selectedWord} />
-      </div>
     </div>
   );
 };

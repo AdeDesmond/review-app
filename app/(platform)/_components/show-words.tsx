@@ -1,21 +1,15 @@
 import { Separator } from "@/components/ui/separator";
 import { ShowWordsItem } from "./show-words-items";
 import { fetchWords } from "@/lib/words";
-import { ObjectId } from "mongoose";
-const testWordsArray = [
-  "😅 names",
-  "🥻clothes",
-  "⛸️ shoes",
-  "👘 pyjamas",
-  "💃🏻 dance",
-  "🥭 mangoes",
-  "🍐 pears",
-];
 
 export const ShowWords = async () => {
   const results = await fetchWords();
-  const renderedWords = results?.map((word: any) => (
-    <ShowWordsItem key={word._id} word={word} />
+  const implicitReturnWordsArray = results?.map((result: any) => ({
+    id: result._id.toString(),
+    word: result.word,
+  }));
+  const renderedWords = implicitReturnWordsArray?.map((word: any) => (
+    <ShowWordsItem key={word.id} word={word} />
   ));
   return (
     <div className="bg-[#555b7aea] shadow-md min-h-screen">
