@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import localfont from "next/font/local";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const mainFont = localfont({
+  src: "../public/fonts/NotoSans_Condensed-Light.ttf",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          mainFont.className,
+          "bg-gradient-to-br from-slate-500 to-slate-950"
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
