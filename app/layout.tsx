@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import "./globals.css";
 import localfont from "next/font/local";
 import { cn } from "@/lib/utils";
@@ -25,6 +26,7 @@ export default function RootLayout({
           "bg-gradient-to-br from-slate-500 to-slate-950"
         )}
       >
+        <Toaster />
         {children}
       </body>
     </html>

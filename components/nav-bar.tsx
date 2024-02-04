@@ -10,7 +10,7 @@ export const NavBar = () => {
           variant="outline"
           size="sm"
         >
-          Home
+          <Link href="/">Home</Link>
         </Button>
         <Button
           className="bg-[#81689D] border-none text-slate-200 font-semibold"
