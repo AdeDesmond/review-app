@@ -14,9 +14,14 @@ export const ShowMeaningItem = ({ result }: ShowMeaningItemProps) => {
         <span className="font-semibold text-white">{result.word}</span>
       </h2>
       <p>{result.phonetic}</p>
+      {/* check the audio setup for react */}
+      {result.phonetics.map((aud: any) => (
+        <audio key={aud} src={aud.audio}></audio>
+      ))}
       {result.meanings.map((part: any, index: any) => (
         <div className="w-full" key={index}>
           <p className="font-semibold text-white">{part.partOfSpeech}</p>
+
           {part.definitions.map((def: any, index: any) => (
             <p key={index} className="text-white">
               {def.definition}

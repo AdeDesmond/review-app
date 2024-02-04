@@ -27,6 +27,7 @@ export const ShowWordMeaning = () => {
     fetchResults();
   }, [wordToSearch]);
 
+  if (wordResult === undefined || !wordResult) return;
   const renderedWordsMeaning = wordResult?.map((result, index) => (
     <ShowMeaningItem key={index} result={result} />
   ));
